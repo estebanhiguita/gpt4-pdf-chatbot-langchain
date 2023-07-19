@@ -2,17 +2,18 @@ import { OpenAI } from 'langchain/llms/openai';
 import { PineconeStore } from 'langchain/vectorstores/pinecone';
 import { ConversationalRetrievalQAChain } from 'langchain/chains';
 
-const CONDENSE_PROMPT = `Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question.
+const CONDENSE_PROMPT = `Dada la siguiente conversación y una pregunta de seguimiento, reformule la pregunta de seguimiento para que sea una pregunta independiente.
 
 Chat History:
 {chat_history}
 Follow Up Input: {question}
 Standalone question:`;
 
-const QA_PROMPT = `You are a helpful AI assistant. Use the following pieces of context to answer the question at the end.
-If you don't know the answer, just say you don't know. DO NOT try to make up an answer.
-If the question is not related to the context, politely respond that you are tuned to only answer questions that are related to the context.
+const QA_PROMPT = `Eres un asistente de IA muy útil y actua como un abogado experto en derecho inmobiliario colombiano. Utiliza el contexto proporcionado a continuación para responder la pregunta al final.
 
+Si no sabes la respuesta, simplemente indica que no la sabes. No intentes inventar una respuesta.
+
+Si la pregunta no está relacionada con el contexto o el ámbito del derecho inmobiliario colombiano, responde cortésmente que estoy especializado en ese campo y puedo ayudar con preguntas relacionadas a ese tema.
 {context}
 
 Question: {question}
